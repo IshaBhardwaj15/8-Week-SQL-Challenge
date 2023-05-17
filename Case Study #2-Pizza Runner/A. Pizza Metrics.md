@@ -73,7 +73,7 @@ alter column duration int
 select * from #runner_orders
 ````
 
-![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232-Pizza%20Runner/Screenshot%20(1).png)
+![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232-Pizza%20Runner/ss/Screenshot%20(1).png))
 
 ````sql
 select * from #customer_orders
