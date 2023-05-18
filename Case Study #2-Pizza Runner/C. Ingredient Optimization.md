@@ -1,6 +1,10 @@
-#Creating some temporary tables that we will use in further queries
---splitting each string in extras and exclusions so that each of the elements is seen in individual rows
+# :pizza: Case Study #2: Pizza Runner
 
+#### Creating some temporary tables that we will use in further queries
+
+- splitting each string in extras and exclusions so that each of the elements is seen in individual rows
+
+````sql
 select c.order_id,c.customer_id,c.pizza_id,pn.pizza_name,exc.value as exclusions,ext.value as extras,c.order_time
 	into #customer_orders_split
 	from #customer_orders as c
@@ -8,12 +12,17 @@ select c.order_id,c.customer_id,c.pizza_id,pn.pizza_name,exc.value as exclusions
 	cross apply string_split(c.extras,',') as ext
 	join pizza_runner.pizza_names as pn on
 		pn.pizza_id=c.pizza_id
+````
 
---seeing how our temporary table looks like
+- seeing how our temporary table looks like
+
+````sql
 select * from #customer_orders_split
+````
 
---Query 1 What are the standard ingredients for each pizza?
+#### 1. What are the standard ingredients for each pizza?
 
+````sql
 with row_split_toppings_cte as
 (
 	select pr.pizza_id,toppingg.value as toppingg
@@ -27,9 +36,11 @@ join pizza_runner.pizza_names as pn on
 join pizza_runner.pizza_toppings as t on
 	t.topping_id=rstc.toppingg
 group by pn.pizza_name,rstc.pizza_id
+````
 
---Query 2 What was the most commonly added extra?
+#### 2. What was the most commonly added extra?
 
+````sql
 with common_extras_cte as
 (
 	select extras,count(extras) as common_extras
@@ -43,9 +54,11 @@ join pizza_runner.pizza_toppings as t on
 	t.topping_id=cet.extras
 group by cet.extras,t.topping_name,cet.common_extras
 order by times_included desc
+````
 
---Query 3 What was the most common exclusion?
+#### 3. What was the most common exclusion?
 
+````sql
 with common_exclusions_cte as
 (
 	select exclusions,count(exclusions) as common_exclusions
@@ -59,13 +72,15 @@ join pizza_runner.pizza_toppings as t on
 	t.topping_id=cex.exclusions
 group by cex.exclusions,t.topping_name,cex.common_exclusions
 order by times_excluded desc
+````
+#### 4. Generate an order item for each record in the customers_orders table in the format of one of the following:
 
---Query 4 Generate an order item for each record in the customers_orders table in the format of one of the following:
---Meat Lovers
---Meat Lovers - Exclude Beef
---Meat Lovers - Extra Bacon
---Meat Lovers - Exclude Cheese, Bacon - Extra Mushroom, Peppers
+- Meat Lovers
+- Meat Lovers - Exclude Beef
+- Meat Lovers - Extra Bacon
+- Meat Lovers - Exclude Cheese, Bacon - Extra Mushroom, Peppers
 
+````sql
 with extras as(
 	select order_id,customer_id,pizza_id,pizza_name,extras,
 		STRING_AGG(t.topping_name,',') as Included_ingredient
@@ -114,3 +129,4 @@ join pizza_runner.pizza_names as np on
 	np.pizza_id=cs.pizza_id
 group by cs.order_id,exc.Excluded_ingredient,ext.Included_ingredient,cs.pizza_name
 order by cs.order_id
+````
