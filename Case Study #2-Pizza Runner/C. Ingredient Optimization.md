@@ -20,6 +20,8 @@ select c.order_id,c.customer_id,c.pizza_id,pn.pizza_name,exc.value as exclusions
 select * from #customer_orders_split
 ````
 
+![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232-Pizza%20Runner/ss/Screenshot%20(20).png)
+
 #### 1. What are the standard ingredients for each pizza?
 
 ````sql
@@ -37,6 +39,8 @@ join pizza_runner.pizza_toppings as t on
 	t.topping_id=rstc.toppingg
 group by pn.pizza_name,rstc.pizza_id
 ````
+
+![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232-Pizza%20Runner/ss/Screenshot%20(21).png)
 
 #### 2. What was the most commonly added extra?
 
@@ -56,6 +60,8 @@ group by cet.extras,t.topping_name,cet.common_extras
 order by times_included desc
 ````
 
+![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232-Pizza%20Runner/ss/Screenshot%20(22).png)
+
 #### 3. What was the most common exclusion?
 
 ````sql
@@ -73,6 +79,9 @@ join pizza_runner.pizza_toppings as t on
 group by cex.exclusions,t.topping_name,cex.common_exclusions
 order by times_excluded desc
 ````
+
+![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232-Pizza%20Runner/ss/Screenshot%20(23).png)
+
 #### 4. Generate an order item for each record in the customers_orders table in the format of one of the following:
 
 - Meat Lovers
@@ -130,3 +139,5 @@ join pizza_runner.pizza_names as np on
 group by cs.order_id,exc.Excluded_ingredient,ext.Included_ingredient,cs.pizza_name
 order by cs.order_id
 ````
+
+![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232-Pizza%20Runner/ss/Screenshot%20(24).png)
