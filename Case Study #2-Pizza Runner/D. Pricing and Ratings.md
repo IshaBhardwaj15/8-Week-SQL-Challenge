@@ -21,6 +21,8 @@ select concat('$',sum(Cost_in_$)) as Total_Revenue
 from Revenue
 ````
 
+![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232-Pizza%20Runner/ss/Screenshot%20(25).png)
+
 #### 2. What if there was an additional $1 charge for any pizza extras?
 
 - Add cheese is $1 extra
@@ -45,6 +47,8 @@ with cs_cte as
 select concat('S',sum(pizza_revenue)+sum(topping_revenue)) as total_revenue
 from cs_cte
 ````
+
+![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232-Pizza%20Runner/ss/Screenshot%20(26).png)
 
 #### 3. The Pizza Runner team now wants to add an additional ratings system that allows customers to rate their runner, 
 
@@ -76,6 +80,8 @@ select *
 from pizza_runner.runners_rating
 ````
 
+![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232-Pizza%20Runner/ss/Screenshot%20(27).png)
+
 #### 4. Using your newly generated table - can you join all of the information together to form a table which has the 
 - following information for successful deliveries?
 - customer_id
@@ -102,6 +108,8 @@ join pizza_runner.runners_rating as rr on
 group by cs.customer_id,cs.order_id,ro.runner_id,rr.rating,cs.order_time,ro.pickup_time,ro.duration,ro.distance
 ````
 
+![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232-Pizza%20Runner/ss/Screenshot%20(28).png)
+
 #### 5. If a Meat Lovers pizza was $12 and Vegetarian $10 fixed prices with no cost for extras and each runner is 
 
 - paid $0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?
@@ -124,3 +132,4 @@ select concat('$',round(sum(pizza_revenue-delivery_cost),2)) as pizza_runner_rev
 from ctee
 ````
 
+![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232-Pizza%20Runner/ss/Screenshot%20(29).png)
