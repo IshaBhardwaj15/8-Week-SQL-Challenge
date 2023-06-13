@@ -1,4 +1,4 @@
-# :pizza: Case Study #1: Pizza Runner
+# :pizza: A. Pizza Metrics
 
 #### Data Cleanup
 
