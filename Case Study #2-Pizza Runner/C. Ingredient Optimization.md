@@ -1,4 +1,4 @@
-# :pizza: Case Study #2: Pizza Runner
+# :pizza: Ingredient Optimization
 
 #### Creating some temporary tables that we will use in further queries
 
