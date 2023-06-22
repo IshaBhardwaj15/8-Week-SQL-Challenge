@@ -33,7 +33,7 @@ group by region_id
 order by region_id
 ```
 
-![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%234-Data%20Bank/ss/Screenshot%20(85).png)
+![image](https://github.com/IshaBhardwaj15/8-Week-SQL-Challenge/blob/main/Case%20Study%20%234-Data%20Bank/ss/Screenshot%20(85)1.png)
 
 ***
 
